@@ -1,10 +1,12 @@
 import java.util.*;
+
+// Contains method for processing of String array.
 public class StringArrayProcessor {
     public static void process(String[] source){
 
-        // In this map Keys are strings containing sorted characters of strings from source
-        // array and Value are Lists containing counter of strings with the same character sets in
-        // the first position and its indexes in all other positions.
+        // In this map Keys are Strings containing sorted characters of Strings from source
+        // array and Values are Lists containing counter of strings with the same character
+        // sets in the first position and its indexes of source array in all other positions.
         Map<String, ArrayList<Integer>> countedSortedStrings = new HashMap<>();
         Set<String> keys = new HashSet<>();
         for(int i = 0; i < source.length; i++){
@@ -29,7 +31,7 @@ public class StringArrayProcessor {
 
             // Print strings with same characters
             if (values.get(0) > 1){
-                StringBuilder toPrint = new StringBuilder(key + ": ");
+                StringBuilder toPrint = new StringBuilder(key + "= ");
                 toPrint.append(values.get(1));
                 for(int i = 2; i < values.size(); i++){
                     toPrint.append(", ").append(values.get(i));
