@@ -14,12 +14,12 @@ class StringArrayProcessorTest {
             new ByteArrayOutputStream();
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         System.setOut(standardOut);
     }
 
