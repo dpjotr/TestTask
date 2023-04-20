@@ -8,7 +8,6 @@ public class StringArrayProcessor {
         // array and Values are Lists containing counter of strings with the same character
         // sets in the first position and its indexes of source array in all other positions.
         Map<String, ArrayList<Integer>> countedSortedStrings = new HashMap<>();
-        Set<String> keys = new HashSet<>();
         for(int i = 0; i < source.length; i++){
             var chars = source[i].toCharArray();
             Arrays.sort(chars);
@@ -18,7 +17,6 @@ public class StringArrayProcessor {
                 value.add(1);
                 value.add(i);
                 countedSortedStrings.put(sortedString, value);
-                keys.add(sortedString);
             }
             else{
                 List<Integer> newValue = countedSortedStrings.get(sortedString);
@@ -26,12 +24,12 @@ public class StringArrayProcessor {
                 newValue.add(i);
             }
         }
-        for (var key: keys){
-            List<Integer> values = countedSortedStrings.get(key);
+        for (var keyValue: countedSortedStrings.entrySet()){
+            List<Integer> values = keyValue.getValue();
 
             // Print strings with same characters
             if (values.get(0) > 1){
-                StringBuilder toPrint = new StringBuilder(key + "= ");
+                StringBuilder toPrint = new StringBuilder(keyValue.getKey() + "= ");
                 toPrint.append(values.get(1));
                 for(int i = 2; i < values.size(); i++){
                     toPrint.append(", ").append(values.get(i));
