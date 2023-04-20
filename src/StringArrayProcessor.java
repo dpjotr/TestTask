@@ -22,7 +22,6 @@ public class StringArrayProcessor {
         }
         for (var keyValue: countedSortedStrings.entrySet()){
 
-            // Print strings with same characters
             if (keyValue.getValue().counter > 1){
                 System.out.println(
                         keyValue.getValue()
@@ -33,7 +32,7 @@ public class StringArrayProcessor {
 }
 class Anagramma{
     int counter = 1;
-    StringBuilder positions = new StringBuilder();
+    final StringBuilder positions = new StringBuilder();
     Anagramma(int position){
         positions.append(position);
     }
