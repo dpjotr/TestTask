@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 // Contains method for processing of String array.
 public class StringArrayProcessor {
@@ -6,9 +8,9 @@ public class StringArrayProcessor {
 
         Map<String, Anagramma> countedSortedStrings = new HashMap<>();
         for(int i = 0; i < source.length; i++){
-            var chars = source[i].toCharArray();
-            Arrays.sort(chars);
-            String sortedString = new String(chars);
+            String sortedString = Stream.of( source[i].split("") )
+                    .sorted()
+                    .collect(Collectors.joining());
             if (!countedSortedStrings.containsKey(sortedString)){
                 Anagramma anagramma = new Anagramma(i);
                 countedSortedStrings.put(sortedString, anagramma);

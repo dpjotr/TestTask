@@ -32,6 +32,14 @@ class StringArrayProcessorTest {
     }
 
     @Test
+    void testMethodProcessWithEmptyStrings() {
+        String[] testArray = new String[]{"", ""};
+        StringArrayProcessor.process(testArray);
+        String consoleOutput = outputStreamCaptor.toString().trim();
+        Assertions.assertEquals("= 0, 1", consoleOutput);
+    }
+
+    @Test
     void testMethodProcessWithDataFromTaskDescription() {
         String[] testArray = new String[]{"qwe","wqe","qwee","a","a"};
         StringArrayProcessor.process(testArray);
