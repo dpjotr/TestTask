@@ -6,34 +6,25 @@ import java.util.stream.Stream;
 public class StringArrayProcessor {
     public static void process(String[] source){
 
-        Map<String, Anagramma> countedSortedStrings = new HashMap<>();
+        Map<String, StringBuilder> countedSortedStrings = new HashMap<>();
         for(int i = 0; i < source.length; i++){
             String sortedString = Stream.of( source[i].split("") )
                     .sorted()
                     .collect(Collectors.joining());
             if (!countedSortedStrings.containsKey(sortedString)){
-                Anagramma anagramma = new Anagramma(i);
-                countedSortedStrings.put(sortedString, anagramma);
+                countedSortedStrings.put(sortedString, new StringBuilder().append(i));
             }
             else{
-                countedSortedStrings.get(sortedString).counter++;
-                countedSortedStrings.get(sortedString).positions.append(", ").append(i);
+                countedSortedStrings.get(sortedString).append(", ").append(i);
             }
         }
         for (var keyValue: countedSortedStrings.entrySet()){
 
-            if (keyValue.getValue().counter > 1){
+            if (keyValue.getValue().toString().contains(",")){
                 System.out.println(
                         keyValue.getValue()
-                                .positions.insert(0, keyValue.getKey() + "= "));
+                                .insert(0, keyValue.getKey() + "= "));
             }
         }
-    }
-}
-class Anagramma{
-    int counter = 1;
-    final StringBuilder positions = new StringBuilder();
-    Anagramma(int position){
-        positions.append(position);
     }
 }
