@@ -44,7 +44,7 @@ class StringArrayProcessorTest {
         String[] testArray = new String[]{"qwe","wqe","qwee","a","a"};
         StringArrayProcessor.process(testArray);
         String consoleOutput = outputStreamCaptor.toString().trim();
-        String[] consoleOutputs = consoleOutput.split("\n");
+        String[] consoleOutputs = consoleOutput.split(System.lineSeparator());
         Assertions.assertEquals(2, consoleOutputs.length);
         Assertions.assertTrue(Arrays.asList(consoleOutputs).contains("eqw= 0, 1"));
         Assertions.assertTrue(Arrays.asList(consoleOutputs).contains("a= 3, 4"));
